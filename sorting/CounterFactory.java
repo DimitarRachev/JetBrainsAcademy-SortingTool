@@ -11,6 +11,12 @@ public class CounterFactory {
         if (args.length == 0) {
             return new StringCounter();
         }
+        for (String s : args) {
+            if (s.equals("-sortIntegers")) {
+                return new SortedIntegerCounter();
+            }
+        }
+
         if (args[0].equals("-dataType")) {
             switch (args[1]) {
                 case "long":
