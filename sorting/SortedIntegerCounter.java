@@ -36,23 +36,36 @@ public class SortedIntegerCounter extends Counter {
         while (scanner.hasNextInt()) {
             int n = scanner.nextInt();
             boolean notInserted = true;
-            if (list.size() == 0) {
+            if (list.size() == 0 || n > list.get(list.size() - 1)) {
                 list.add(n);
                 notInserted = false;
             }
+//            if (notInserted) {
+//                for (int i = 0; i < list.size() - 1; i++) {
+//                    if (n < list.get(i)) {
+//                        list.add(i, n);
+//                        notInserted = false;
+//                        break;
+//                    }
+//                }
+//            }
+//            if (notInserted && n < list.get(list.size() - 1)) {
+//                list.add(list.size() - 1, n);
+//            } else if (notInserted) {
+//                list.add(n);
+//            }
+            if (notInserted && n < list.get(0)) {
+                list.add(0, n);
+                notInserted = false;
+            }
             if (notInserted) {
-                for (int i = 0; i < list.size() - 1; i++) {
-                    if (n < list.get(i)) {
-                        list.add(i, n);
+                for (int i = list.size() - 2; i >= 0; i--) {
+                    if (n >= list.get(i)) {
+                        list.add(i + 1, n);
                         notInserted = false;
                         break;
                     }
                 }
-            }
-            if (notInserted && n < list.get(list.size() - 1)) {
-                list.add(list.size() - 1, n);
-            } else if (notInserted) {
-                list.add(n);
             }
         }
     }
