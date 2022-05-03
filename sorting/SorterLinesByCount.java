@@ -12,8 +12,8 @@ public class SorterLinesByCount extends Sorter {
     Map<String, Integer> map;
     int count;
 
-    public SorterLinesByCount() {
-        scanner = new Scanner(System.in);
+    public SorterLinesByCount(Scanner scanner) {
+        this.scanner = scanner;
         map = new TreeMap<>();
         count = 0;
     }
@@ -24,6 +24,11 @@ public class SorterLinesByCount extends Sorter {
         populateMap();
         Map<String, Integer> sorted = sortMap();
         return getString(sorted);
+    }
+
+    @Override
+    void close() {
+        scanner.close();
     }
 
     @NotNull

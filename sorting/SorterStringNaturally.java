@@ -11,9 +11,10 @@ public class SorterStringNaturally extends Sorter{
     Scanner scanner;
     List<String> list;
 
-    public SorterStringNaturally() {
+    public SorterStringNaturally(Scanner scanner) {
         list = new ArrayList<>();
-        scanner = new Scanner(System.in);
+        this.scanner = scanner;
+
     }
 
     @Override
@@ -21,6 +22,11 @@ public class SorterStringNaturally extends Sorter{
         populateList();
         Collections.sort(list);
         return getString();
+    }
+
+    @Override
+    void close() {
+        scanner.close();
     }
 
     @NotNull

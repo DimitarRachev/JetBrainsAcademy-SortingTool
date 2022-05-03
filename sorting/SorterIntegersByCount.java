@@ -8,13 +8,13 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class SorterIntegersByCount extends Sorter {
-    private Map<Integer, Integer> map;
     private Scanner scanner;
+    private Map<Integer, Integer> map;
     int count;
 
-    public SorterIntegersByCount() {
+    public SorterIntegersByCount(Scanner scanner) {
+        this.scanner = scanner;
         map = new TreeMap<>();
-        this.scanner = new Scanner(System.in);
         count = 0;
     }
 
@@ -26,6 +26,11 @@ public class SorterIntegersByCount extends Sorter {
             map.put(n, map.get(n) + 1);
             count++;
         }
+    }
+
+    @Override
+    void close() {
+        scanner.close();
     }
 
     @Override

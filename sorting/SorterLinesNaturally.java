@@ -11,11 +11,15 @@ public class SorterLinesNaturally extends Sorter{
     Scanner scanner;
     List<String> list;
 
-    public SorterLinesNaturally() {
-        scanner = new Scanner(System.in);
+    public SorterLinesNaturally(Scanner scanner) {
+        this.scanner = scanner;
         list = new ArrayList<>();
     }
 
+    @Override
+    void close() {
+        scanner.close();
+    }
 
     @Override
     String sort() {

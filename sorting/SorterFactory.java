@@ -1,27 +1,20 @@
 package sorting;
 
+import java.io.FileNotFoundException;
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SorterFactory {
     String[] args;
+    Scanner scanner;
 
-    public SorterFactory(String[] args) {
+
+
+    public SorterFactory(String[] args) throws FileNotFoundException {
         this.args = args;
-        checkArray(args);
-    }
-
-    private void checkArray(String[] args) {
-        for (int i = 0; i < args.length; i++) {
-            if (args[i].equals("-sortingType")) {
-                if (i + 1 >= args.length || (!(args[i + 1].equals("natural") && !args[i].equals("byCount")))) {
-                    throw new IllegalArgumentException("No sorting type defined!");
-                }
-            } else if (args[i].equals("-dataType")) {
-                if (i + 1 >= args.length || (!args[i].equals("long") && !args[i].equals("word") && !args[i].equals("line"))) {
-                    throw new IllegalArgumentException("No data type defined!");
-                }
-            } else if (args[i].startsWith("-")) {
-                System.out.println("\"" + args[i] + "\" is not a valid parameter. It will be skipped.");
-            }
-        }
+        scanner = ScannerFactory.makeScanner(args);
 
     }
 
@@ -32,23 +25,23 @@ public class SorterFactory {
         switch (dataType) {
             case "long":
                 if (sortingType.equals("natural")) {
-                    return new SorterIntegerNaturally();
+                    return new SorterIntegerNaturally(scanner);
                 } else if (sortingType.equals("byCount")) {
-                    return new SorterIntegersByCount();
+                    return new SorterIntegersByCount(scanner);
                 }
                 break;
             case "word":
                 if (sortingType.equals("natural")) {
-                    return new SorterStringNaturally();
+                    return new SorterStringNaturally(scanner);
                 } else if (sortingType.equals("byCount")) {
-                    return new SorterStrigsByCount();
+                    return new SorterStrigsByCount(scanner);
                 }
                 break;
             case "line":
                 if (sortingType.equals("natural")) {
-                    return new SorterLinesNaturally();
+                    return new SorterLinesNaturally(scanner);
                 } else if (sortingType.equals("byCount")) {
-                    return new SorterLinesByCount();
+                    return new SorterLinesByCount(scanner);
                 }
                 break;
         }

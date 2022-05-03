@@ -10,9 +10,14 @@ public class SorterIntegerNaturally extends Sorter {
     Scanner scanner;
     List<Integer> list;
 
-    public SorterIntegerNaturally() {
-        this.scanner = new Scanner(System.in);
+    public SorterIntegerNaturally(Scanner scanner) {
+        this.scanner = scanner;
         this.list = new ArrayList<>();
+    }
+
+    @Override
+    void close() {
+        scanner.close();
     }
 
     @Override

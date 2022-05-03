@@ -12,10 +12,15 @@ public class SorterStrigsByCount extends Sorter {
     Map<String, Integer> map;
     int count;
 
-    public SorterStrigsByCount() {
-        scanner = new Scanner(System.in);
+    public SorterStrigsByCount(Scanner scanner) {
+        this.scanner = scanner;
         map = new TreeMap<>();
         count = 0;
+    }
+
+    @Override
+    void close() {
+        scanner.close();
     }
 
     @Override
@@ -57,5 +62,6 @@ public class SorterStrigsByCount extends Sorter {
             map.put(s, map.get(s) + 1);
             count++;
         }
+
     }
 }
