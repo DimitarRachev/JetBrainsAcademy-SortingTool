@@ -2,6 +2,8 @@ package sorting;
 
 import java.util.Scanner;
 
+@Deprecated
+//not used since stage 4/6
 public class LineCounter extends Counter{
     Scanner scanner = new Scanner(System.in);
 

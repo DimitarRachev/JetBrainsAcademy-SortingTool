@@ -1,5 +1,7 @@
 package sorting;
 
+@Deprecated
+//not used since stage 4/6
 public class CounterFactory {
     String[] args;
 
@@ -7,13 +9,14 @@ public class CounterFactory {
         this.args = args;
     }
 
+
     public Counter makeCounter() {
         if (args.length == 0) {
             return new StringCounter();
         }
         for (String s : args) {
             if (s.equals("-sortIntegers")) {
-                return new SortedIntegerCounter();
+//                return new SortedIntegerNaturally();
             }
         }
 

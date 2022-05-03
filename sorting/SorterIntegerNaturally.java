@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SortedIntegerCounter extends Counter {
+public class SorterIntegerNaturally extends Sorter {
     Scanner scanner;
     List<Integer> list;
 
-    public SortedIntegerCounter() {
+    public SorterIntegerNaturally() {
         this.scanner = new Scanner(System.in);
         this.list = new ArrayList<>();
     }
 
     @Override
-    String count() {
+    String sort() {
         getAndSortIntegers();
         return getStringBuilder().toString();
     }

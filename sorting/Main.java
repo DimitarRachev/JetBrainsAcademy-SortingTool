@@ -3,9 +3,12 @@ package sorting;
 public class Main {
     public static void main(final String[] args) {
 
-        CounterFactory factory = new CounterFactory(args);
-        Counter counter = factory.makeCounter();
-        System.out.println(counter.count());
+//        CounterFactory factory = new CounterFactory(args);
+//        Counter counter = factory.makeCounter();
+
+        SorterFactory factory1 = new SorterFactory(args);
+        Sorter sorter = factory1.makeSorter();
+        System.out.println(sorter.sort());
 
     }
 }
