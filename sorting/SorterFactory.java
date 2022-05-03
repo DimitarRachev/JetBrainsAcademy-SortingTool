@@ -5,7 +5,26 @@ public class SorterFactory {
 
     public SorterFactory(String[] args) {
         this.args = args;
+        checkArray(args);
     }
+
+    private void checkArray(String[] args) {
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].equals("-sortingType")) {
+                if (i + 1 >= args.length || (!args[i + 1].equals("natural") && !args[i + 1].equals("byCount"))) {
+                    throw new IllegalArgumentException("No sorting type defined!");
+                }
+            } else if (args[i].equals("-dataType")) {
+                if (i + 1 >= args.length || (!args[i + 1].equals("long") && !args[i + 1].equals("word") && !args[i + 1].equals("line"))) {
+                    throw new IllegalArgumentException("No data type defined!");
+                }
+            } else if (args[i].startsWith("-")) {
+                System.out.println("\"" + args[i] + "\" is not a valid parameter. It will be skipped.");
+            }
+        }
+
+    }
+
 
     Sorter makeSorter() {
         String dataType = getDataType();
